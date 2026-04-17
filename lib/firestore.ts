@@ -39,7 +39,7 @@ export async function createUserProfile(userId: string, data: Omit<UserProfile, 
     ...data,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
-  })
+  });
 } catch (error) {
     console.error("Firestore error in createUserProfile:", error):
     throw error;
