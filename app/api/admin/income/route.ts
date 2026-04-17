@@ -2,6 +2,9 @@
  * app/api/admin/income/route.ts
  * Admin: add income records.
  */
+
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { adminAuth, adminDb } from '@/lib/firebase-admin'
 import { FieldValue } from 'firebase-admin/firestore'
