@@ -33,18 +33,12 @@ export async function getUserProfile(userId: string): Promise<UserProfile | null
 }
 
 export async function createUserProfile(userId: string, data: Omit<UserProfile, 'id'>): Promise<void> {
-  try {
-    const docRef = doc (db, COLLECTIONS.USERS, userID);
-    await setDoc(docRef, {
+    await setDoc(doc(db, COLLECTIONS.USERS, userID), {
     ...data,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
-} catch (error) {
-    console.error("Firestore error in createUserProfile:", error):
-    throw error;
-  }
-}
+} 
 
 export async function updateUserProfile(userId: string, data: Partial<UserProfile>): Promise<void> {
   await updateDoc(doc(db, COLLECTIONS.USERS, userId), {
