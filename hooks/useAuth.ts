@@ -74,8 +74,8 @@ export function useAuth() {
         joinedMonth: currentMonth(),
         contractAccepted: true,
         isActive: false,
-        createdAt: null,
-        updatedAt: null,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       }
       await createUserProfile(cred.user.uid, newProfile)
       setProfile({ id: cred.user.uid, ...newProfile })
