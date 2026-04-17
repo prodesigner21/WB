@@ -18,6 +18,7 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  console.log("Current Profile:", profile);
   useEffect(() => {
     if (!initialized) return
     if (isAuthenticated && profile?.role === 'admin') router.replace('/admin')
