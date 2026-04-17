@@ -19,11 +19,11 @@ export async function generateFinancialStatement(params: {
   const { user, contributions, payments, memberMonths, totalContributions, profitShare, netBalance } = params
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
 
-  const DARK = [10, 16, 32]       // vault-800
-  const GREEN = [16, 185, 129]    // emerald-500
-  const GOLD = [251, 191, 36]     // gold-400
-  const LIGHT = [255, 255, 255]
-  const MUTED = [120, 130, 150]
+  const DARK: [number, number, number] = [10, 16, 32]       // vault-800
+  const GREEN: [number, number, number] = [16, 185, 129]    // emerald-500
+  const GOLD: [number, number, number] = [251, 191, 36]     // gold-400
+  const LIGHT: [number, number, number] = [255, 255, 255]
+  const MUTED: [number, number, number] = [120, 130, 150]
 
   const W = doc.internal.pageSize.getWidth()
 
@@ -124,9 +124,9 @@ export async function generateFinancialStatement(params: {
     didParseCell: (data) => {
       if (data.column.index === 1 && data.section === 'body') {
         const val = data.cell.raw as string
-        if (val === 'PAID') data.cell.styles.textColor = [16, 185, 129]
-        else if (val === 'PENDING') data.cell.styles.textColor = [251, 191, 36]
-        else data.cell.styles.textColor = [239, 68, 68]
+        if (val === 'PAID') data.cell.styles.textColor = [16, 185, 129] as [number, number, number]
+        else if (val === 'PENDING') data.cell.styles.textColor = [251, 191, 36] as [number, number, number]
+        else data.cell.styles.textColor = [239, 68, 68] as [number, number, number]
       }
     },
     margin: { left: 14, right: 14 },
